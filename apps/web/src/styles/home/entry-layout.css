@@ -1864,7 +1864,12 @@
      pseudo scrolls away with the content, and `::before` is already taken by
      the top scroll-fade band above. */
   margin: 0 12px 12px 0;
-  --entry-content-surface: rgba(255, 255, 255, 0.85);
+  /* The card's own ground, derived from the theme's base surface so it
+     follows the active theme: 85% of --bg over the blurred backdrop behind
+     it. A literal white here left the card milky in dark mode while the
+     chrome around it went dark — the hero title then rendered near-white
+     text on that white card. */
+  --entry-content-surface: color-mix(in srgb, var(--bg) 85%, transparent);
   --entry-content-ring: var(--glass-refract-ring-edge);
   background: var(--entry-content-surface);
   -webkit-backdrop-filter: var(--material-thin-backdrop);
